@@ -1,5 +1,6 @@
 from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 # =============================================================
 # Scraping weather data from Foreca.fi for Porvoo
@@ -56,10 +57,19 @@ soup = BeautifulSoup(html, 'html.parser')
 # There is a div with id 'obscontainer' that contains the data needed
 obs_container = soup.find('div', id='obscontainer')
 
-# get date and time information from the second div class="r"
-date_and_time = obs_container.find_all('div', class_='r')[1].text
 print('-' * 40)
-print(f"Viimeisin havainto: {date_and_time}")
+# get date and time information from the second div class="r"
+date_and_time_s = obs_container.find_all('div', class_='r')[1].text
+splitted = date_and_time_s.split(' ')
+date_month_s = splitted[0].split('.')
+hhmm_s = splitted[2].split('.')
+date_and_time_dt = datetime(year=datetime.now().year,
+                            month=int(date_month_s[1]),
+                            day=int(date_month_s[0]),
+                            hour=int(hhmm_s[0]),
+                            minute=int(hhmm_s[1]))
+print(f"Viimeisin havainto: {date_and_time_s}")
+print(date_and_time_dt)
 
 # inside div id='obscontainer', there is a div with class 'temp' that contains temperature information
 temp = obs_container.find('div', class_='temp')
