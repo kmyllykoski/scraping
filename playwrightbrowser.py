@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 
 # =============================================================
 # Scraping weather data from Foreca.fi for Porvoo
+#
 # Initial attemtpt used requests and BeautifulSoup, but the page
 # content is generated dynamically after page is loaded in the browser.
 # This can be verified by comparing the DOM content in the browser's
