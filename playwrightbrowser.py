@@ -19,7 +19,7 @@ from datetime import datetime
 # - uv add playwright
 # - uv run playwright install 
 
-do_get_from_web = False
+do_get_from_web = True
 
 # =============================================================
 # Two options:
