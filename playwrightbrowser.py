@@ -17,7 +17,12 @@ from datetime import datetime
 # - uv init
 # - uv add beautifulsoup4
 # - uv add playwright
-# - uv run playwright install 
+# - uv run playwright install
+# 
+# Or if cloning the repo, run:
+# - uv install
+# - uv run playwright install
+# =============================================================
 
 do_get_from_web = True
 
